@@ -117,4 +117,14 @@ class Car extends Component {
       this.keyDown[key] = false
     }
   }
+  
+  collidesWith(otherComponent) {
+    const accPosition = {x: this.position.x - this.width / 2, y: this.position.y - this.height / 2};
+    return (
+      accPosition.x + this.width >= otherComponent.position.x && // box1 right collides with box2 left
+      otherComponent.position.x + otherComponent.width >= accPosition.x && // box2 right collides with box1 left
+      accPosition.y + this.height >= otherComponent.position.y && // box1 bottom collides with box2 top
+      otherComponent.position.y + otherComponent.height >= accPosition.y // box1 top collides with box2 bottom
+    )
+  }
 }

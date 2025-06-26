@@ -167,9 +167,9 @@ function renderBounds() {
     ctx,
     position: {
       x: 60,
-      y: ((SPRITE_SIZE * 8) - (SPRITE_SIZE * 8 / 2) - 60)
+      y: ((SPRITE_SIZE * 8) - (SPRITE_SIZE * 8 / 2) - 45)
     },
-    width: 130,
+    width: 120,
     height: SPRITE_SIZE * 8 / 2,
     color: 'transparent'
   })
@@ -202,10 +202,10 @@ function renderBounds() {
   const innerBound = new Component({
     ctx,
     position: {
-      x: 320,
+      x: 440,
       y: ((SPRITE_SIZE * 8) - (SPRITE_SIZE * 8 / 2) - 60)
     },
-    width: SPRITE_SIZE * 3.9,
+    width: SPRITE_SIZE * 3.9 - 120,
     height: SPRITE_SIZE * 5.8 / 2,
     color: 'transparent'
   })
@@ -215,10 +215,10 @@ function renderBounds() {
     ctx,
     position: {
       x: (320 + SPRITE_SIZE * 3.9),
-      y: (SPRITE_SIZE * 8 - SPRITE_SIZE * 4.8 / 2)
+      y: (SPRITE_SIZE * 8 - SPRITE_SIZE * 4.5 / 2)
     },
     width: SPRITE_SIZE,
-    height: SPRITE_SIZE * 0.8,
+    height: SPRITE_SIZE * 0.5,
     color: 'transparent'
   })
   bounds.push(innerBound2)
@@ -230,7 +230,7 @@ function renderBounds() {
       y: (SPRITE_SIZE * 1.6)
     },
     width: 120,
-    height: SPRITE_SIZE * 8 / 2,
+    height: SPRITE_SIZE * 8 / 1.75,
     color: 'transparent'
   })
   bounds.push(innerBound3)
@@ -239,10 +239,10 @@ function renderBounds() {
     ctx,
     position: {
       x: 200,
-      y: (SPRITE_SIZE * 1.6)
+      y: (SPRITE_SIZE * 1.75)
     },
     width: 120,
-    height: SPRITE_SIZE * 0.8,
+    height: SPRITE_SIZE * 0.5,
     color: 'transparent'
   })
   bounds.push(innerBound4)
@@ -275,13 +275,30 @@ function renderCar() {
     clear()
     renderBackground();
     renderForeground();
+    renderBounds();
     updateCarState();
     renderCar();
     renderTimer();
 
+    bounds.forEach((bound) => {
+      if (car1.collidesWith(bound)) {
+        car1.velocity.x = -car1.velocity.x * 2;
+        car1.velocity.y = -car1.velocity.y * 4;
+      }
+      
+      if (car2.collidesWith(bound)) {
+        car2.velocity.x = -car2.velocity.x * 2;
+        car2.velocity.y = -car2.velocity.y * 4;
+      }
+    })
+    
+    console.log(car1.velocity)
     if (car1.collidesWith(car2)) {
       car1.velocity.x = -car1.velocity.x * 2;
+      car1.velocity.y = -car1.velocity.y;
+
       car2.velocity.x = -car2.velocity.x * 2;
+      car2.velocity.y = -car2.velocity.y;
     }
 
     lastGameLoopTimeStamp = Date.now()

@@ -70,8 +70,56 @@ class Car extends Component {
 
     if (this.isThrottling) {
       this.power += this.powerFactor * this.isThrottling;
+      
+      if (this.player === 1) {
+        const vroomAudio = document.querySelector('.vroomAudio1')
+        if (vroomAudio && vroomAudio.paused) {
+          vroomAudio.play();
+        }
+  
+        const idleAudio = document.querySelector('.idleAudio1')
+        if (idleAudio) {
+          idleAudio.pause();
+        }
+      }
+
+      if (this.player === 2) {
+        const vroomAudio = document.querySelector('.vroomAudio2')
+        if (vroomAudio && vroomAudio.paused) {
+          vroomAudio.play();
+        }
+  
+        const idleAudio = document.querySelector('.idleAudio2')
+        if (idleAudio) {
+          idleAudio.pause();
+        }
+      }
     } else {
       this.power -= this.powerFactor;
+
+      if (this.player === 1) {
+        const vroomAudio = document.querySelector('.vroomAudio1')
+        if (vroomAudio) {
+          vroomAudio.pause();
+        }
+  
+        const idleAudio = document.querySelector('.idleAudio1')
+        if (idleAudio && vroomAudio.paused) {
+          idleAudio.play();
+        }
+      }
+
+      if (this.player === 2) {
+        const vroomAudio = document.querySelector('.vroomAudio2')
+        if (vroomAudio) {
+          vroomAudio.pause();
+        }
+  
+        const idleAudio = document.querySelector('.idleAudio2')
+        if (idleAudio && vroomAudio.paused) {
+          idleAudio.play();
+        }
+      }
     }
     if (this.isReversing) {
       this.reverse += this.reverseFactor;

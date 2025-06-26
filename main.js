@@ -36,26 +36,14 @@ function renderCar() {
 }
 
 function initKeyControls() {
-    const drawCar = () => {
-    console.log(lastKeyUpKey);
-    console.log(lastKeyDownKey);
-
-    console.log(lastKeyUpKeyCode);
-    console.log(lastKeyDownKeyCode);
-    };
-
     window.onkeydown = function (event) {
         lastKeyDownKeyCode = event.keyCode;
         lastKeyDownKey = event.key;
-
-        drawCar();
     };
 
     window.onkeyup = function (event) {
         lastKeyUpKeyCode = event.keyCode;
         lastKeyUpKey = event.key;
-
-        drawCar();
     };
 }
 
@@ -106,3 +94,9 @@ function renderBackground() {
 
     window.requestAnimationFrame(gameLoop);
 })()
+
+function dummyFunction() {
+    console.log("Dummy function called");
+}
+
+dummyFunction(

@@ -39,13 +39,11 @@ class Car extends Component {
     this.distance += parseInt((Math.sqrt(this.velocity.x ** 2 + this.velocity.y ** 2) * 10).toFixed(2))
     if (this.player === 1) {
       ctx.font = "48px Arial";
-      ctx.strokeStyle = "red";
       ctx.fillText(`Red distance: ${this.distance}`, window.innerWidth - 500, 150);
       ctx.fillText(`Red: ${(Math.sqrt(this.velocity.x ** 2 + this.velocity.y ** 2) * 100).toFixed(2)}`, 20, window.innerHeight - 20);
     } else {
       ctx.font = "48px Arial";
-      ctx.strokeStyle = "red";
-      ctx.fillStyle = 'red'
+      ctx.fillStyle = 'white'
       ctx.fillText(`Blue distance: ${this.distance}`, window.innerWidth - 500, 250);
       ctx.fillText(`Blue: ${(Math.sqrt(this.velocity.x ** 2 + this.velocity.y ** 2) * 100).toFixed(2)}`, window.innerWidth - 250, window.innerHeight - 20);
     }

@@ -65,7 +65,7 @@ function renderTimer() {
     ctx.clearRect(window.innerWidth - 225, 0, 225, 70);
     ctx.font = "48px Arial";
     ctx.strokeStyle = "black";
-    ctx.strokeText(minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0") + ":" + milliseconds.toString().padStart(3, "0"), window.innerWidth - 225, 50);
+    ctx.fillText(minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0") + ":" + milliseconds.toString().padStart(3, "0"), window.innerWidth - 225, 50);
 }
 
 function renderBackground() {

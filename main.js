@@ -14,6 +14,7 @@ let lastKeyUpKey = "";
 let lastKeyDownKey = "";
 let cam = { x: 0, y: 0 }
 const car = new Car({ctx: ctx, velocity: { x: 0, y: 0}})
+let bounds = []
 
 function initCanvas() {
     const width = window.innerWidth

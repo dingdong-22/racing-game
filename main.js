@@ -38,11 +38,13 @@ function initKeyControls() {
     window.onkeydown = function (event) {
         lastKeyDownKeyCode = event.keyCode;
         lastKeyDownKey = event.key;
+        car.pressedKey(lastKeyDownKey)
     };
 
     window.onkeyup = function (event) {
         lastKeyUpKeyCode = event.keyCode;
         lastKeyUpKey = event.key;
+        car.releasedKey(lastKeyDownKey)
     };
 }
 
@@ -251,7 +253,7 @@ function clear() {
 }
 
 function updateCarState() {
-    car.updateState()
+    car.update()
 }
 
 function renderCar() {
@@ -261,14 +263,13 @@ function renderCar() {
 (function gameLoop(){
     newGameLoopTimeStamp = Date.now()
     const dt = newGameLoopTimeStamp - lastGameLoopTimeStamp
-    gameLoopDelta = dt / 100
+    gameLoopDelta = dt / 10
     clear()
     renderBackground();
     renderForeground();
     renderBounds();
     updateCarState();
     renderCar();
-    renderForeground();
     renderTimer();
 
     lastGameLoopTimeStamp = Date.now()

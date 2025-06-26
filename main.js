@@ -71,8 +71,33 @@ function renderTimer() {
     ctx.strokeText(minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0") + ":" + milliseconds.toString().padStart(3, "0"), 0, 50);
 }
 
+function renderBackground() {
+  const SPRITE_SIZE = 128;
+  const map = [
+    ["01", "09", "09", "09", "02", "11", "11", "11", "11", "11"],
+    ["05", "12", "13", "14", "03", "11", "11", "11", "11", "11"],
+    ["05", "08", "02", "05", "08", "09", "09", "02", "11", "11"],
+    ["06", "14", "03", "06", "13", "13", "14", "03", "11", "11"],
+    ["11", "05", "03", "11", "11", "11", "05", "08", "02", "11"],
+    ["11", "05", "03", "11", "11", "11", "06", "14", "03", "11"],
+    ["11", "05", "08", "09", "09", "09", "09", "10", "03", "11"],
+    ["11", "06", "13", "13", "13", "13", "13", "13", "07", "11"],
+  ]
+
+  for (let y = 0; y < map.length; y += 1) {
+    for (let x = 0; x < map[y].length; x += 1) {
+      const currTile = new Image();
+      const tileSpritePath = "./assets/Tiles/Grass/land_grass" + map[y][x] + ".png"
+      currTile.src = tileSpritePath
+      currTile.addEventListener("load", () => {
+        ctx.drawImage(currTile, x * SPRITE_SIZE, y * SPRITE_SIZE)
+      })
+    }
+  }
+}
+
 (function gameLoop(){
-    // renderBackground();
+    renderBackground();
     // renderForeground();
     // renderCar();
     renderTimer();

@@ -1,0 +1,75 @@
+let lastKeyUpKeyCode = "";
+let lastKeyDownKeyCode = "";
+let lastKeyUpKey = "";
+let lastKeyDownKey = "";
+
+(function initCanvas() {
+    const canvas = document.getElementById('gameCanvas')
+    const ctx = canvas.getContext('2d')
+
+    const width = window.innerWidth
+    const height = window.innerHeight
+
+    // 1. Multiply the canvas's width and height by the devicePixelRatio
+    const ratio = window.devicePixelRatio || 1
+    canvas.width = width * ratio
+    canvas.height = height * ratio
+
+    // 2. Force it to display at the original (logical) size with CSS or style attributes
+    canvas.style.width = width + 'px'
+    canvas.style.height = height + 'px'
+
+    // 3. Scale the context so you can draw on it without considering the ratio.
+    ctx.scale(ratio, ratio)
+
+    const img = new Image();
+
+    img.addEventListener("load", () => {
+        ctx.drawImage(img, 0, 0);
+    });
+
+    img.src = "assets/Cars/car_black_1.png";
+
+    (function initKeyControls() {
+        const drawCar = () => {
+        console.log(lastKeyUpKey);
+        console.log(lastKeyDownKey);
+
+        console.log(lastKeyUpKeyCode);
+        console.log(lastKeyDownKeyCode);
+        };
+
+        window.onkeydown = function (event) {
+            lastKeyDownKeyCode = event.keyCode;
+            lastKeyDownKey = event.key;
+
+            drawCar();
+        };
+
+        window.onkeyup = function (event) {
+            lastKeyUpKeyCode = event.keyCode;
+            lastKeyUpKey = event.key;
+
+            drawCar();
+        };
+    })()
+
+    function initTimer() {
+        let start=Date.now();
+        function loop() {
+            const canvas = document.getElementById('gameCanvas')
+            let milliseconds = Math.floor((Date.now() - start));
+            let seconds = Math.floor(milliseconds / 1000);
+            let minutes = Math.floor(seconds / 60);
+            seconds %= 60;
+            let ctx = canvas.getContext("2d");
+            ctx.clearRect(0, 0, 250, 60);
+            ctx.font = "48px Arial";
+            ctx.strokeText(minutes.toString().padStart(2,"0") + ":" + seconds.toString().padStart(2, "0") + ":" + milliseconds.toString().padStart(2, "0"), 0, 50);
+            requestAnimationFrame(loop);
+        }
+        loop();
+    }
+
+    initTimer()
+})()

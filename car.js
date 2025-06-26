@@ -16,9 +16,9 @@ class Car extends Component {
     this.powerFactor = 0.001;
     this.reverseFactor = 0.0005;
 
-    this.drag = 0.95;
-    this.angularDrag = 0.95;
-    this.turnSpeed = 0.002;
+    this.drag = 0.90;
+    this.angularDrag = 0.90;
+    this.turnSpeed = 0.005;
   }
 
   draw() {

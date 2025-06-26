@@ -1,3 +1,6 @@
+// Constants
+const SPRITE_SIZE = 128;
+
 // Global State
 let start = Date.now();
 let newGameLoopTimeStamp = Date.now()
@@ -9,6 +12,7 @@ let lastKeyUpKeyCode = "";
 let lastKeyDownKeyCode = "";
 let lastKeyUpKey = "";
 let lastKeyDownKey = "";
+let cam = { x: 0, y: 0 }
 const car = new Car({ctx: ctx, velocity: { x: 0, y: 0}})
 
 function initCanvas() {
@@ -56,7 +60,6 @@ function renderTimer() {
 }
 
 function renderBackground() {
-  const SPRITE_SIZE = 128;
   const map = [
     ["01", "09", "09", "09", "02", "11", "11", "11", "11", "11"],
     ["05", "12", "13", "14", "03", "11", "11", "11", "11", "11"],
@@ -73,11 +76,14 @@ function renderBackground() {
       const currTile = new Image();
       const tileSpritePath = "./assets/Tiles/Grass/land_grass" + map[y][x] + ".png"
       currTile.src = tileSpritePath
-      currTile.addEventListener("load", () => {
-        ctx.drawImage(currTile, x * SPRITE_SIZE, y * SPRITE_SIZE)
-      })
+      ctx.drawImage(currTile, (x * SPRITE_SIZE) - cam.x, (y * SPRITE_SIZE) - cam.y)
     }
   }
+
+}
+
+function clear() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 function updateCarState() {
@@ -92,11 +98,11 @@ function renderCar() {
     newGameLoopTimeStamp = Date.now()
     const dt = newGameLoopTimeStamp - lastGameLoopTimeStamp
     gameLoopDelta = dt / 100
-
+    clear()
     renderBackground();
-    renderTimer();
     updateCarState();
     renderCar();
+    renderTimer();
     // renderForeground();
 
     lastGameLoopTimeStamp = Date.now()

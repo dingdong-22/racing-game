@@ -6,7 +6,11 @@ class Car extends Component {
   }
 
   draw() {
-    ctx.drawImage(this.img, this.position.x, this.position.y);
+    
+    ctx.drawImage(this.img,
+      window.innerWidth / 2 - (SPRITE_SIZE / 2),
+      window.innerHeight / 2 - (SPRITE_SIZE / 2)
+    );
   }
 
   updateState() {
@@ -14,7 +18,13 @@ class Car extends Component {
     
     const delta = dt / 100
 
-    this.position.x += this.velocity.x * delta
-    this.position.y += this.velocity.y * delta
+    let dx = this.velocity.x * delta
+    let dy = this.velocity.y * delta
+
+    this.position.x += dx
+    this.position.y += dy
+
+    cam.x += dx
+    cam.y += dy
   }
 }

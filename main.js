@@ -1,12 +1,12 @@
+// Global State
 let lastKeyUpKeyCode = "";
 let lastKeyDownKeyCode = "";
 let lastKeyUpKey = "";
 let lastKeyDownKey = "";
+let canvas = document.getElementById('gameCanvas')
+let ctx = canvas.getContext('2d')
 
-(function initCanvas() {
-    const canvas = document.getElementById('gameCanvas')
-    const ctx = canvas.getContext('2d')
-
+function initCanvas() {
     const width = window.innerWidth
     const height = window.innerHeight
 
@@ -22,6 +22,7 @@ let lastKeyDownKey = "";
     // 3. Scale the context so you can draw on it without considering the ratio.
     ctx.scale(ratio, ratio)
 
+    // TODO remove me.
     const img = new Image();
 
     img.addEventListener("load", () => {
@@ -29,47 +30,57 @@ let lastKeyDownKey = "";
     });
 
     img.src = "assets/Cars/car_black_1.png";
+}
 
-    (function initKeyControls() {
-        const drawCar = () => {
-        console.log(lastKeyUpKey);
-        console.log(lastKeyDownKey);
+function initKeyControls() {
+    const drawCar = () => {
+    console.log(lastKeyUpKey);
+    console.log(lastKeyDownKey);
 
-        console.log(lastKeyUpKeyCode);
-        console.log(lastKeyDownKeyCode);
-        };
+    console.log(lastKeyUpKeyCode);
+    console.log(lastKeyDownKeyCode);
+    };
 
-        window.onkeydown = function (event) {
-            lastKeyDownKeyCode = event.keyCode;
-            lastKeyDownKey = event.key;
+    window.onkeydown = function (event) {
+        lastKeyDownKeyCode = event.keyCode;
+        lastKeyDownKey = event.key;
 
-            drawCar();
-        };
+        drawCar();
+    };
 
-        window.onkeyup = function (event) {
-            lastKeyUpKeyCode = event.keyCode;
-            lastKeyUpKey = event.key;
+    window.onkeyup = function (event) {
+        lastKeyUpKeyCode = event.keyCode;
+        lastKeyUpKey = event.key;
 
-            drawCar();
-        };
-    })()
+        drawCar();
+    };
+}
 
-    function initTimer() {
-        let start=Date.now();
-        function loop() {
-            const canvas = document.getElementById('gameCanvas')
-            let milliseconds = Math.floor((Date.now() - start));
-            let seconds = Math.floor(milliseconds / 1000);
-            let minutes = Math.floor(seconds / 60);
-            seconds %= 60;
-            let ctx = canvas.getContext("2d");
-            ctx.clearRect(0, 0, 250, 60);
-            ctx.font = "48px Arial";
-            ctx.strokeText(minutes.toString().padStart(2,"0") + ":" + seconds.toString().padStart(2, "0") + ":" + milliseconds.toString().padStart(2, "0"), 0, 50);
-            requestAnimationFrame(loop);
-        }
-        loop();
+function initTimer() {
+    let start=Date.now();
+    function loop() {
+        const canvas = document.getElementById('gameCanvas')
+        let milliseconds = Math.floor((Date.now() - start));
+        let seconds = Math.floor(milliseconds / 1000);
+        let minutes = Math.floor(seconds / 60);
+        seconds %= 60;
+        let ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, 250, 100);
+        ctx.font = "48px Arial";
+        ctx.strokeText(minutes.toString().padStart(2,"0") + ":" + seconds.toString().padStart(2, "0") + ":" + milliseconds.toString().padStart(2, "0"), 0, 60);
+        requestAnimationFrame(loop);
     }
+    loop();
+}
 
-    initTimer()
-})()
+initCanvas()
+initKeyControls()
+initTimer()
+
+function gameLoop(){
+    // renderBackground();
+    // renderForeground();
+    // renderCar();
+
+    window.requestAnimationFrame(gameLoop);
+}

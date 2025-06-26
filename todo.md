@@ -14,7 +14,7 @@ Game logic
 > Game/Frame cycle (Alex) X
 > Tracking Car (Alex)
 > Physics
-> Collision detection (Tanveer)
+> Collision detection (Tanveer) X
 > Timer (Alex) X
 > Lap
 > Speedometer

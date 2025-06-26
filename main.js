@@ -15,6 +15,16 @@ let lastKeyDownKey = "";
 let cam = { x: 0, y: 0 }
 const car = new Car({ctx: ctx, velocity: { x: 0, y: 0}})
 let bounds = []
+// Up
+// down
+// left 
+// right
+let keyDown = {
+    87: false, 
+    83: false,
+    65: false,
+    68: false,
+}
 
 function initCanvas() {
     const width = window.innerWidth
@@ -35,17 +45,13 @@ function initCanvas() {
 }
 
 function initKeyControls() {
-    window.onkeydown = function (event) {
-        lastKeyDownKeyCode = event.keyCode;
-        lastKeyDownKey = event.key;
-        car.pressedKey(lastKeyDownKey)
-    };
+    window.addEventListener("keydown", (event) => {
+        keyDown[event.which] = true
+    });
 
-    window.onkeyup = function (event) {
-        lastKeyUpKeyCode = event.keyCode;
-        lastKeyUpKey = event.key;
-        car.releasedKey(lastKeyDownKey)
-    };
+    window.addEventListener("keyup", (event) => {
+        keyDown[event.which] = false
+    });
 }
 
 initCanvas()
@@ -263,7 +269,7 @@ function renderCar() {
 (function gameLoop(){
     newGameLoopTimeStamp = Date.now()
     const dt = newGameLoopTimeStamp - lastGameLoopTimeStamp
-    gameLoopDelta = dt / 10
+    gameLoopDelta = dt / 2
     clear()
     renderBackground();
     renderForeground();

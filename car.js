@@ -4,13 +4,6 @@ class Car extends Component {
     this.img = new Image();
     this.img.src = "assets/Cars/car_black_small_1.png";
 
-    this.keyDown = {
-      "w": false,
-      "a": false,
-      "s": false,
-      "d": false,
-    }
-
     this.power = 0
     this.reverse = 0
     this.angle = 0
@@ -77,10 +70,10 @@ class Car extends Component {
 
     const canTurn = this.power > 0.0025 || this.reverse;
 
-    const controls = this.keyDown
+    const controls = keyDown
 
-    const throttle = Math.round(controls.w * 10) / 10;
-    const reverse = Math.round(controls.s * 10) / 10;
+    const throttle = Math.round(controls[87] * 10) / 10;
+    const reverse = Math.round(controls[83] * 10) / 10;
 
     if (
       this.isThrottling !== throttle ||
@@ -90,8 +83,8 @@ class Car extends Component {
       this.isThrottling = throttle;
       this.isReversing = reverse;
     }
-    const turnLeft = canTurn && Math.round(controls.d * 10) / 10;
-    const turnRight = canTurn && Math.round(controls.a * 10) / 10;
+    const turnLeft = canTurn && Math.round(controls[68] * 10) / 10;
+    const turnRight = canTurn && Math.round(controls[65] * 10) / 10;
 
     if (this.isTurningLeft !== turnLeft) {
       changed = true;

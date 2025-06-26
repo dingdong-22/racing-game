@@ -28,9 +28,7 @@ class Car extends Component {
     ctx.save();
     ctx.translate(x, y);
     ctx.rotate(this.angle);
-    const carWidth = 40 / 2
-    const carHeight = 70 / 2
-    ctx.drawImage(this.img, -carWidth/2, -carHeight/2, carWidth, carHeight);
+    ctx.drawImage(this.img, -this.width/2, -this.height/2, this.width, this.height);
     ctx.restore();
   }
 

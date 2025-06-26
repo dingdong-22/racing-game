@@ -312,12 +312,12 @@ function renderCar() {
     bounds.forEach((bound) => {
       if (car1.collidesWith(bound)) {
         car1.velocity.x = -car1.velocity.x * 2;
-        car1.velocity.y = -car1.velocity.y * 4;
+        car1.velocity.y = -car1.velocity.y * 2;
       }
       
       if (car2.collidesWith(bound)) {
         car2.velocity.x = -car2.velocity.x * 2;
-        car2.velocity.y = -car2.velocity.y * 4;
+        car2.velocity.y = -car2.velocity.y * 2;
       }
     })
     

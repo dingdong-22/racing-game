@@ -1,14 +1,13 @@
 // Global State
 let start = Date.now();
+let lastGameLoopTimeStamp = Date.now()
 let canvas = document.getElementById('gameCanvas')
 let ctx = canvas.getContext('2d')
 let lastKeyUpKeyCode = "";
 let lastKeyDownKeyCode = "";
 let lastKeyUpKey = "";
 let lastKeyDownKey = "";
-const cars = [
-    new Car({ctx: ctx, velocity: { x: 1, y: 1}})
-]
+const car = new Car({ctx: ctx, velocity: { x: 1, y: 1}})
 
 function initCanvas() {
     const width = window.innerWidth
@@ -80,15 +79,11 @@ function renderBackground() {
 }
 
 function updateCarState() {
-    cars.forEach((car) => {
-        car.updateState()
-    })
+    car.updateState()
 }
 
 function renderCar() {
-    cars.forEach((car) => {
-        car.draw()
-    })
+    car.draw()
 }
 
 (function gameLoop(){
@@ -98,5 +93,6 @@ function renderCar() {
     renderCar();
     // renderForeground();
 
+    lastGameLoopTimeStamp = Date.now()
     window.requestAnimationFrame(gameLoop);
 })()

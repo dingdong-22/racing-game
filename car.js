@@ -3,7 +3,6 @@ class Car extends Component {
     super({ctx, position, color, width, height, velocity})
     this.img = new Image();
     this.img.src = "assets/Cars/car_black_small_1.png";
-    this.lastRendered = Date.now()
   }
 
   draw() {
@@ -11,13 +10,11 @@ class Car extends Component {
   }
 
   updateState() {
-    const dt = Date.now() - this.lastRendered
+    const dt = Date.now() - lastGameLoopTimeStamp
     
     const delta = dt / 100
 
     this.position.x += this.velocity.x * delta
     this.position.y += this.velocity.y * delta
-
-    this.lastRendered = Date.now()
   }
 }

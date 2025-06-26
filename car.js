@@ -22,6 +22,7 @@ class Car extends Component {
   }
 
   draw() {
+    console.log(this.angle)
     // const x = window.innerWidth / 2 - (SPRITE_SIZE / 2)
     // const y = window.innerHeight / 2 - (SPRITE_SIZE / 2)
     // const angleInRadians = (this.angle) / Math.PI
@@ -49,7 +50,7 @@ class Car extends Component {
     // ctx.restore(); 
 
 
-    // const angleInRadians = (this.angle) / Math.PI
+    // const angleInRadians = (this.angle) % Math.PI / Math.PI
     // ctx.rotate(angleInRadians);
     // console.log(angleInRadians)
     // ctx.drawImage(this.img,
@@ -72,8 +73,8 @@ class Car extends Component {
 
     const controls = keyDown
 
-    const throttle = Math.round(controls[87] * 10) / 10;
-    const reverse = Math.round(controls[83] * 10) / 10;
+    const throttle = Math.round(controls[83] * 10) / 10;
+    const reverse = Math.round(controls[87] * 10) / 10;
 
     if (
       this.isThrottling !== throttle ||
@@ -83,8 +84,8 @@ class Car extends Component {
       this.isThrottling = throttle;
       this.isReversing = reverse;
     }
-    const turnLeft = canTurn && Math.round(controls[68] * 10) / 10;
-    const turnRight = canTurn && Math.round(controls[65] * 10) / 10;
+    const turnLeft = canTurn && Math.round(controls[65] * 10) / 10;
+    const turnRight = canTurn && Math.round(controls[68] * 10) / 10;
 
     if (this.isTurningLeft !== turnLeft) {
       changed = true;

@@ -57,6 +57,7 @@ function renderTimer() {
     seconds %= 60;
     ctx.clearRect(0, 0, 225, 70);
     ctx.font = "48px Arial";
+    ctx.strokeStyle = "black";
     ctx.strokeText(minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0") + ":" + milliseconds.toString().padStart(3, "0"), 0, 50);
 }
 
@@ -93,7 +94,7 @@ function renderBounds() {
     },
     width: SPRITE_SIZE * 10,
     height: 60,
-    color: 'red'
+    color: 'transparent'
   })
   bounds.push(topBound)
   
@@ -105,7 +106,7 @@ function renderBounds() {
     },
     width: SPRITE_SIZE * 3,
     height: SPRITE_SIZE * 1.9,
-    color: 'red'
+    color: 'transparent'
   })
   bounds.push(topBound2)
   
@@ -117,7 +118,7 @@ function renderBounds() {
     },
     width: SPRITE_SIZE * 10,
     height: 60,
-    color: 'red'
+    color: 'transparent'
   })
   bounds.push(bottomBound)
   
@@ -129,7 +130,7 @@ function renderBounds() {
     },
     width: 60,
     height: SPRITE_SIZE * 8,
-    color: 'red'
+    color: 'transparent'
   })
   bounds.push(leftBound)
   
@@ -141,7 +142,7 @@ function renderBounds() {
     },
     width: 130,
     height: SPRITE_SIZE * 8 / 2,
-    color: 'red'
+    color: 'transparent'
   })
   bounds.push(leftBound2)
   
@@ -153,7 +154,7 @@ function renderBounds() {
     },
     width: 190,
     height: SPRITE_SIZE * 8,
-    color: 'red'
+    color: 'transparent'
   })
   bounds.push(rightBound)
   
@@ -165,7 +166,7 @@ function renderBounds() {
     },
     width: 120,
     height: SPRITE_SIZE * 8 / 2 - 10,
-    color: 'red'
+    color: 'transparent'
   })
   bounds.push(rightBound2)
   
@@ -177,7 +178,7 @@ function renderBounds() {
     },
     width: SPRITE_SIZE * 3.9,
     height: SPRITE_SIZE * 5.8 / 2,
-    color: 'red'
+    color: 'transparent'
   })
   bounds.push(innerBound)
   
@@ -189,7 +190,7 @@ function renderBounds() {
     },
     width: SPRITE_SIZE,
     height: SPRITE_SIZE * 0.8,
-    color: 'red'
+    color: 'transparent'
   })
   bounds.push(innerBound2)
   
@@ -201,7 +202,7 @@ function renderBounds() {
     },
     width: 120,
     height: SPRITE_SIZE * 8 / 2,
-    color: 'red'
+    color: 'transparent'
   })
   bounds.push(innerBound3)
   
@@ -213,7 +214,7 @@ function renderBounds() {
     },
     width: 120,
     height: SPRITE_SIZE * 0.8,
-    color: 'red'
+    color: 'transparent'
   })
   bounds.push(innerBound4)
 

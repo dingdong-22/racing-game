@@ -17,13 +17,13 @@ class Car extends Component {
     this.reverseFactor = 0.0005;
 
     this.drag = 0.90;
-    this.angularDrag = 0.90;
-    this.turnSpeed = 0.005;
+    this.angularDrag = 0.85;
+    this.turnSpeed = 0.008;
   }
 
   draw() {
-    // const x = window.innerWidth / 2 - (SPRITE_SIZE / 2)
-    // const y = window.innerHeight / 2 - (SPRITE_SIZE / 2)
+    const x = window.innerWidth / 2 - (SPRITE_SIZE / 2)
+    const y = window.innerHeight / 2 - (SPRITE_SIZE / 2)
     // const angle = (this.angle) / Math.PI
 
     // // save the current co-ordinate system 
@@ -60,19 +60,11 @@ class Car extends Component {
     // ctx.rotate(-angleInRadians);
 
 
-    // ctx.save();
-    // ctx.translate(x, y);
-    // ctx.rotate(-angle);
-    // // ctx.translate(-x,-y);
-    // ctx.drawImage(this.img, SPRITE_SIZE / 2, SPRITE_SIZE / 2);
-    // ctx.restore();
-
-    ctx.drawImage(this.img,
-      window.innerWidth / 2 - (SPRITE_SIZE / 2),
-      window.innerHeight / 2 - (SPRITE_SIZE / 2),
-      40 / 4,
-      70 / 4
-    );
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(this.angle);
+    ctx.drawImage(this.img, -20 / 2, -35 / 2, 40 / 2, 70 / 2);
+    ctx.restore();
   }
 
   update() {

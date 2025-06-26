@@ -13,7 +13,8 @@ let lastKeyDownKeyCode = "";
 let lastKeyUpKey = "";
 let lastKeyDownKey = "";
 let cam = { x: 0, y: 0 }
-let boostPos = { x: 8 * SPRITE_SIZE, y: 6 * SPRITE_SIZE }
+let boostPos = [{ x: 8 * SPRITE_SIZE, y: 6 * SPRITE_SIZE },
+                { x: 2 * SPRITE_SIZE, y: 5 * SPRITE_SIZE }]
 const car1 = new Car({width: 20, height: 35, position: { x: 475, y: 350 }, ctx: ctx, velocity: { x: 0, y: 0}, imagePath: "assets/Cars/car_red_small_1.png", player: 1})
 const car2 = new Car({width: 20, height: 35, position: { x: 525, y: 350 }, ctx: ctx, velocity: { x: 0, y: 0}, imagePath: "assets/Cars/car_blue_small_1.png", player: 2})
 const cars = [car1, car2]
@@ -258,7 +259,10 @@ function renderBoost() {
     const boostSpritePath = "./assets/Objects/oil.png"
 
     boostTile.src = boostSpritePath
-    ctx.drawImage(boostTile, boostPos.x, boostPos.y, 48, 32)
+
+    boostPos.forEach((bPos) => {
+      ctx.drawImage(boostTile, bPos.x, bPos.y, 48, 32)
+    })
 
 
     cars.forEach((car) => {
@@ -268,10 +272,12 @@ function renderBoost() {
 }
 
 function tryBoost(car, car_centre) {
-  if (car_centre.x >= boostPos.x && car_centre.x <= boostPos.x + 60 &&
-      car_centre.y >= boostPos.y + 20 && car_centre.y <= boostPos.y + 60) {
-    car.boost();
-  }
+  boostPos.forEach(bPos => {
+    if (car_centre.x >= bPos.x && car_centre.x <= bPos.x + 60 &&
+        car_centre.y >= bPos.y + 20 && car_centre.y <= bPos.y + 60) {
+      car.boost();
+    }
+  })
 }
 
 function clear() {

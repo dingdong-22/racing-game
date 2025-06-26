@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" href="index.css">
-
 </head>
 <body>
     <div class="title">
@@ -11,7 +10,6 @@
     <div>
         <canvas id="gameCanvas"></canvas>
     </div>
-
     <script>
         (function initCanvas() {
             const canvas = document.getElementById('gameCanvas')
@@ -31,9 +29,14 @@
 
             // 3. Scale the context so you can draw on it without considering the ratio.
             ctx.scale(ratio, ratio)
-            ctx.fillRect(25, 25, 100, 100);
-            ctx.clearRect(45, 45, 60, 60);
-            ctx.strokeRect(50, 50, 50, 50);
+
+            const img = new Image();
+    
+            img.addEventListener("load", () => {
+                ctx.drawImage(img, 0, 0);
+            });
+    
+            img.src = "assets/Cars/car_black_1.png";
         })()
     </script>
 </body>

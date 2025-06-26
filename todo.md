@@ -1,27 +1,26 @@
-Map
+Map (Ross)
 
-> Canvas
-> Styling
+> Canvas X
 > Sprites
 
 Car
 
-> Canvas
-> Styling
-> Sprites
+> Canvas X
+> Sprites X
 
 Game logic
 
-> Physics
-> Keyboard input
+> Keyboard input (Tanveer)
 > Game/Frame cycle
+> Tracking Car
+> Physics
 > Collision detection
-> Timer
+> Timer (Alex)
 > Lap
-> AI
 > Speedometer
 > Fuel tracking
 > Tyre change
+> AI
 
 Immersion
 

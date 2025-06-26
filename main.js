@@ -292,7 +292,6 @@ function renderCar() {
       }
     })
     
-    console.log(car1.velocity)
     if (car1.collidesWith(car2)) {
       car1.velocity.x = -car1.velocity.x * 2;
       car1.velocity.y = -car1.velocity.y;

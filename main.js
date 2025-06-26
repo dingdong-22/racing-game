@@ -61,16 +61,14 @@ initCanvas()
 initKeyControls()
 
 function renderTimer() {
-    const canvas = document.getElementById('gameCanvas')
     let dt = Date.now() - start
     let milliseconds = Math.floor(dt % 1_000);
     let seconds = Math.floor(dt / 1_000);
     let minutes = Math.floor(dt / 60_000);
     seconds %= 60;
-    let ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, 250, 150);
     ctx.font = "48px Arial";
-    ctx.strokeText(minutes.toString().padStart(2,"0") + ":" + seconds.toString().padStart(2, "0") + ":" + milliseconds.toString().padStart(2, "0"), 0, 100);
+    ctx.strokeText(minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0") + ":" + milliseconds.toString().padStart(3, "0"), 0, 50);
 }
 
 (function gameLoop(){

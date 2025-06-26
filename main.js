@@ -1,13 +1,15 @@
 // Global State
 let start = Date.now();
+let newGameLoopTimeStamp = Date.now()
 let lastGameLoopTimeStamp = Date.now()
+let gameLoopDelta = 0
 let canvas = document.getElementById('gameCanvas')
 let ctx = canvas.getContext('2d')
 let lastKeyUpKeyCode = "";
 let lastKeyDownKeyCode = "";
 let lastKeyUpKey = "";
 let lastKeyDownKey = "";
-const car = new Car({ctx: ctx, velocity: { x: 1, y: 1}})
+const car = new Car({ctx: ctx, velocity: { x: 0, y: 0}})
 
 function initCanvas() {
     const width = window.innerWidth
@@ -87,6 +89,10 @@ function renderCar() {
 }
 
 (function gameLoop(){
+    newGameLoopTimeStamp = Date.now()
+    const dt = newGameLoopTimeStamp - lastGameLoopTimeStamp
+    gameLoopDelta = dt / 100
+
     renderBackground();
     renderTimer();
     updateCarState();

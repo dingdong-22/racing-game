@@ -79,7 +79,146 @@ function renderBackground() {
       ctx.drawImage(currTile, (x * SPRITE_SIZE) - cam.x, (y * SPRITE_SIZE) - cam.y)
     }
   }
+}
 
+function renderBounds() {
+  bounds = []
+  
+  const topBound = new Component({
+    ctx,
+    position: {
+      x: -cam.x,
+      y: -cam.y
+    },
+    width: SPRITE_SIZE * 10,
+    height: 60,
+    color: 'red'
+  })
+  bounds.push(topBound)
+  
+  const topBound2 = new Component({
+    ctx,
+    position: {
+      x: SPRITE_SIZE * 4.6 - cam.x,
+      y: 60 -cam.y
+    },
+    width: SPRITE_SIZE * 3,
+    height: SPRITE_SIZE * 1.9,
+    color: 'red'
+  })
+  bounds.push(topBound2)
+  
+  const bottomBound = new Component({
+    ctx,
+    position: {
+      x: -cam.x,
+      y: (SPRITE_SIZE * 8 - 60)-cam.y
+    },
+    width: SPRITE_SIZE * 10,
+    height: 60,
+    color: 'red'
+  })
+  bounds.push(bottomBound)
+  
+  const leftBound = new Component({
+    ctx,
+    position: {
+      x: -cam.x,
+      y: -cam.y
+    },
+    width: 60,
+    height: SPRITE_SIZE * 8,
+    color: 'red'
+  })
+  bounds.push(leftBound)
+  
+  const leftBound2 = new Component({
+    ctx,
+    position: {
+      x: 60 - cam.x,
+      y: ((SPRITE_SIZE * 8) - (SPRITE_SIZE * 8 / 2) - 60) -cam.y
+    },
+    width: 130,
+    height: SPRITE_SIZE * 8 / 2,
+    color: 'red'
+  })
+  bounds.push(leftBound2)
+  
+  const rightBound = new Component({
+    ctx,
+    position: {
+      x: (SPRITE_SIZE * 10 - 190) - cam.x,
+      y: -cam.y
+    },
+    width: 190,
+    height: SPRITE_SIZE * 8,
+    color: 'red'
+  })
+  bounds.push(rightBound)
+  
+  const rightBound2 = new Component({
+    ctx,
+    position: {
+      x: ((SPRITE_SIZE * 10 - 190) - 190 + 70) - cam.x,
+      y: 60 -cam.y
+    },
+    width: 120,
+    height: SPRITE_SIZE * 8 / 2 - 10,
+    color: 'red'
+  })
+  bounds.push(rightBound2)
+  
+  const innerBound = new Component({
+    ctx,
+    position: {
+      x: 320 - cam.x,
+      y: ((SPRITE_SIZE * 8) - (SPRITE_SIZE * 8 / 2) - 60) -cam.y
+    },
+    width: SPRITE_SIZE * 3.9,
+    height: SPRITE_SIZE * 5.8 / 2,
+    color: 'red'
+  })
+  bounds.push(innerBound)
+  
+  const innerBound2 = new Component({
+    ctx,
+    position: {
+      x: (320 + SPRITE_SIZE * 3.9) - cam.x,
+      y: (SPRITE_SIZE * 8 - SPRITE_SIZE * 4.8 / 2) -cam.y
+    },
+    width: SPRITE_SIZE,
+    height: SPRITE_SIZE * 0.8,
+    color: 'red'
+  })
+  bounds.push(innerBound2)
+  
+  const innerBound3 = new Component({
+    ctx,
+    position: {
+      x: 320 - cam.x,
+      y: (SPRITE_SIZE * 1.6) -cam.y
+    },
+    width: 120,
+    height: SPRITE_SIZE * 8 / 2,
+    color: 'red'
+  })
+  bounds.push(innerBound3)
+  
+  const innerBound4 = new Component({
+    ctx,
+    position: {
+      x: 200 - cam.x,
+      y: (SPRITE_SIZE * 1.6) -cam.y
+    },
+    width: 120,
+    height: SPRITE_SIZE * 0.8,
+    color: 'red'
+  })
+  bounds.push(innerBound4)
+
+  bounds.forEach((bound) => {
+    bound.draw();
+  });
 }
 
 function clear() {
@@ -100,6 +239,7 @@ function renderCar() {
     gameLoopDelta = dt / 100
     clear()
     renderBackground();
+    renderBounds();
     updateCarState();
     renderCar();
     renderTimer();

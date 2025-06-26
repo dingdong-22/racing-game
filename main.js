@@ -30,7 +30,7 @@ function initCanvas() {
         ctx.drawImage(img, 200, 200);
     });
 
-    img.src = "assets/Cars/car_black_1.png";
+    img.src = "assets/Cars/car_black_small_1.png";
 }
 
 function initKeyControls() {

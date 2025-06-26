@@ -12,9 +12,9 @@ Game logic
 
 > Keyboard input (Tanveer) X
 > Game/Frame cycle (Alex) X
-> Tracking Car
+> Tracking Car (Alex)
 > Physics
-> Collision detection
+> Collision detection (Tanveer)
 > Timer (Alex) X
 > Lap
 > Speedometer

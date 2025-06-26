@@ -14,12 +14,15 @@ class Car extends Component {
 
     this.maxPower = 0.075;
     this.maxReverse = 0.0375;
+    this.boostFactor = 5;
     this.powerFactor = 0.001;
     this.reverseFactor = 0.0005;
 
     this.drag = 0.85;
     this.angularDrag = 0.85;
     this.turnSpeed = 0.008;
+    this.isBoosting = false;
+    this.boostCooldown = null;
   }
 
   draw() {
@@ -165,7 +168,7 @@ class Car extends Component {
       this.keyDown[key] = false
     }
   }
-  
+
   collidesWith(otherComponent) {
     const accPosition = {x: this.position.x - this.width / 2, y: this.position.y - this.height / 2};
     return (
@@ -174,5 +177,21 @@ class Car extends Component {
       accPosition.y + this.height >= otherComponent.position.y && // box1 bottom collides with box2 top
       otherComponent.position.y + otherComponent.height >= accPosition.y // box1 top collides with box2 bottom
     )
+  }
+
+  boost() {
+    if (new Date() < this.boostCooldown) {
+      return;
+    }
+
+    this.power *= 2
+    this.maxPower *= this.boostFactor
+    let endTime = new Date()
+    this.boostCooldown = endTime.setSeconds(endTime.getSeconds() + +3)
+
+    setTimeout(() => {
+      this.maxPower /= this.boostFactor
+      this.power = Math.min(this.power, this.maxPower)
+    }, "1000");
   }
 }

@@ -13,6 +13,7 @@ let lastKeyDownKeyCode = "";
 let lastKeyUpKey = "";
 let lastKeyDownKey = "";
 let cam = { x: 0, y: 0 }
+let boostPos = { x: 8 * SPRITE_SIZE, y: 6 * SPRITE_SIZE }
 const car1 = new Car({width: 20, height: 35, position: { x: 475, y: 350 }, ctx: ctx, velocity: { x: 0, y: 0}, imagePath: "assets/Cars/car_red_small_1.png", player: 1})
 const car2 = new Car({width: 20, height: 35, position: { x: 525, y: 350 }, ctx: ctx, velocity: { x: 0, y: 0}, imagePath: "assets/Cars/car_blue_small_1.png", player: 2})
 const cars = [car1, car2]
@@ -252,6 +253,27 @@ function renderBounds() {
   });
 }
 
+function renderBoost() {
+    const boostTile = new Image();
+    const boostSpritePath = "./assets/Objects/arrow_yellow.png"
+
+    boostTile.src = boostSpritePath
+    ctx.drawImage(boostTile, boostPos.x, boostPos.y, 48, 32)
+
+
+    car_centre = { x: car1.position.x + (car1.width), y: car1.position.y + car1.height }
+    cars.forEach((car) => {
+      tryBoost(car)
+    })
+}
+
+function tryBoost(car) {
+  if (car_centre.x >= boostPos.x && car_centre.x <= boostPos.x + 60 &&
+      car_centre.y >= boostPos.y + 20 && car_centre.y <= boostPos.y + 60) {
+    car.boost();
+  }
+}
+
 function clear() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
@@ -276,6 +298,7 @@ function renderCar() {
     renderBackground();
     renderForeground();
     renderBounds();
+    renderBoost();
     updateCarState();
     renderCar();
     renderTimer();

@@ -1,4 +1,10 @@
-.test {
+.title {
+    height: 10vh;
     color: red;
-    font-size: 200px;
+    font-size: 40px;
+}
+
+#gameCanvas { 
+    height: 90vh;
+    width: 100vh;
 }

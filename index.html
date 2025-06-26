@@ -1,9 +1,39 @@
 <!DOCTYPE html>
 <head>
-  <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css">
+
 </head>
 <body>
-    <div class="test">
-        Hello World
+    <div class="title">
+        Better Racing Game
     </div>
+
+    <div>
+        <canvas id="gameCanvas"></canvas>
+    </div>
+
+    <script>
+        (function initCanvas() {
+            const canvas = document.getElementById('gameCanvas')
+            const ctx = canvas.getContext('2d')
+
+            const width = window.innerWidth
+            const height = window.innerHeight
+
+            // 1. Multiply the canvas's width and height by the devicePixelRatio
+            const ratio = window.devicePixelRatio || 1
+            canvas.width = width * ratio
+            canvas.height = height * ratio
+
+            // 2. Force it to display at the original (logical) size with CSS or style attributes
+            canvas.style.width = width + 'px'
+            canvas.style.height = height + 'px'
+
+            // 3. Scale the context so you can draw on it without considering the ratio.
+            ctx.scale(ratio, ratio)
+            ctx.fillRect(25, 25, 100, 100);
+            ctx.clearRect(45, 45, 60, 60);
+            ctx.strokeRect(50, 50, 50, 50);
+        })()
+    </script>
 </body>

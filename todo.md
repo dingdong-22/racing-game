@@ -7,7 +7,7 @@ Map
 Car
 
 > Canvas
-> Styling  
+> Styling
 > Sprites
 
 Game logic

@@ -1,11 +1,14 @@
 // Global State
 let start = Date.now();
+let canvas = document.getElementById('gameCanvas')
+let ctx = canvas.getContext('2d')
 let lastKeyUpKeyCode = "";
 let lastKeyDownKeyCode = "";
 let lastKeyUpKey = "";
 let lastKeyDownKey = "";
-let canvas = document.getElementById('gameCanvas')
-let ctx = canvas.getContext('2d')
+const cars = [
+    new Car({ctx: ctx})
+]
 
 function initCanvas() {
     const width = window.innerWidth
@@ -23,16 +26,6 @@ function initCanvas() {
     // 3. Scale the context so you can draw on it without considering the ratio.
     ctx.scale(ratio, ratio)
 
-}
-
-function renderCar() {
-  const img = new Image();
-
-  img.addEventListener("load", () => {
-      ctx.drawImage(img, 120, 200);
-  });
-
-  img.src = "assets/Cars/car_black_small_1.png";
 }
 
 function initKeyControls() {
@@ -86,17 +79,17 @@ function renderBackground() {
   }
 }
 
+function renderCar() {
+    cars.forEach((car) => {
+        car.draw()
+    })
+}
+
 (function gameLoop(){
     renderBackground();
-    renderCar();
     renderTimer();
+    renderCar();
     // renderForeground();
 
     window.requestAnimationFrame(gameLoop);
 })()
-
-function dummyFunction() {
-    console.log("Dummy function called");
-}
-
-dummyFunction(

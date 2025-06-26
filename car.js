@@ -24,42 +24,6 @@ class Car extends Component {
   draw() {
     const x = window.innerWidth / 2 - (SPRITE_SIZE / 2)
     const y = window.innerHeight / 2 - (SPRITE_SIZE / 2)
-    // const angle = (this.angle) / Math.PI
-
-    // // save the current co-ordinate system 
-    // // before we screw with it
-    // ctx.save(); 
-
-    // // move to the middle of where we want to draw our image
-    // ctx.translate(x, y);
-
-    // // rotate around that point, converting our 
-    // // angle from degrees to radians 
-    // ctx.rotate(angleInRadians);
-
-    // // draw it up and to the left by half the width
-    // // and height of the image 
-    // ctx.drawImage(this.img,
-    //   window.innerWidth / 2 - (SPRITE_SIZE / 2),
-    //   window.innerHeight / 2 - (SPRITE_SIZE / 2)
-    // );
-    // // ctx.drawImage(image, -(image.width/2), -(image.height/2));
-
-    // // and restore the co-ords to how they were when we began
-    // ctx.restore(); 
-
-
-    // const angleInRadians = (this.angle) % Math.PI / Math.PI
-    // ctx.rotate(angleInRadians);
-    // console.log(angleInRadians)
-    // ctx.drawImage(this.img,
-    //   window.innerWidth / 2 - (SPRITE_SIZE / 2),
-    //   window.innerHeight / 2 - (SPRITE_SIZE / 2)
-    // );
-
-    // ctx.rotate(-angleInRadians);
-
-
     ctx.save();
     ctx.translate(x, y);
     ctx.rotate(this.angle);

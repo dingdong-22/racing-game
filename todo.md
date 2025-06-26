@@ -1,30 +1,30 @@
 Map
 
+> Canvas
 > Styling
 > Sprites
-> Canvas
 
 Car
 
+> Canvas
 > Styling  
 > Sprites
-> Canvas
-
-Immersion
-
-> Audio
-> Vibration
-> Death screen
 
 Game logic
 
+> Physics
 > Keyboard input
 > Game/Frame cycle
 > Collision detection
-> Physics
 > Timer
 > Lap
 > AI
 > Speedometer
 > Fuel tracking
 > Tyre change
+
+Immersion
+
+> Audio
+> Vibration
+> Death screen

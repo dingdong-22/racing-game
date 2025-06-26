@@ -11,6 +11,11 @@
         <canvas id="gameCanvas"></canvas>
     </div>
     <script>
+        let lastKeyUpKeyCode = "";
+        let lastKeyDownKeyCode = "";
+        let lastKeyUpKey = "";
+        let lastKeyDownKey = "";
+
         (function initCanvas() {
             const canvas = document.getElementById('gameCanvas')
             const ctx = canvas.getContext('2d')
@@ -31,12 +36,36 @@
             ctx.scale(ratio, ratio)
 
             const img = new Image();
-    
+
             img.addEventListener("load", () => {
                 ctx.drawImage(img, 0, 0);
             });
-    
+
             img.src = "assets/Cars/car_black_1.png";
+
+            (function initKeyControls() {
+              const drawCar = () => {
+                console.log(lastKeyUpKey);
+                console.log(lastKeyDownKey);
+
+                console.log(lastKeyUpKeyCode);
+                console.log(lastKeyDownKeyCode);
+              };
+
+              window.onkeydown = function (event) {
+                  lastKeyDownKeyCode = event.keyCode;
+                  lastKeyDownKey = event.key;
+
+                  drawCar();
+              };
+
+              window.onkeyup = function (event) {
+                  lastKeyUpKeyCode = event.keyCode;
+                  lastKeyUpKey = event.key;
+
+                  drawCar();
+              };
+            })()
         })()
     </script>
 </body>

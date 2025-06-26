@@ -6,7 +6,6 @@ class Car extends Component {
   }
 
   draw() {
-    
     ctx.drawImage(this.img,
       window.innerWidth / 2 - (SPRITE_SIZE / 2),
       window.innerHeight / 2 - (SPRITE_SIZE / 2)
@@ -14,13 +13,8 @@ class Car extends Component {
   }
 
   updateState() {
-    const dt = Date.now() - lastGameLoopTimeStamp
-    
-    const delta = dt / 100
-
-    let dx = this.velocity.x * delta
-    let dy = this.velocity.y * delta
-
+    let dx = this.velocity.x * gameLoopDelta
+    let dy = this.velocity.y * gameLoopDelta
     this.position.x += dx
     this.position.y += dy
 

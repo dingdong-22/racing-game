@@ -255,7 +255,7 @@ function renderBounds() {
 
 function renderBoost() {
     const boostTile = new Image();
-    const boostSpritePath = "./assets/Objects/arrow_yellow.png"
+    const boostSpritePath = "./assets/Objects/oil.png"
 
     boostTile.src = boostSpritePath
     ctx.drawImage(boostTile, boostPos.x, boostPos.y, 48, 32)

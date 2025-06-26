@@ -268,6 +268,7 @@ function renderCar() {
     renderBounds();
     updateCarState();
     renderCar();
+    renderForeground();
     renderTimer();
 
     lastGameLoopTimeStamp = Date.now()

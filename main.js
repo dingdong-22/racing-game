@@ -1,4 +1,5 @@
 // Global State
+let start = Date.now();
 let lastKeyUpKeyCode = "";
 let lastKeyDownKeyCode = "";
 let lastKeyUpKey = "";
@@ -26,7 +27,7 @@ function initCanvas() {
     const img = new Image();
 
     img.addEventListener("load", () => {
-        ctx.drawImage(img, 0, 0);
+        ctx.drawImage(img, 200, 200);
     });
 
     img.src = "assets/Cars/car_black_1.png";
@@ -56,31 +57,27 @@ function initKeyControls() {
     };
 }
 
-function initTimer() {
-    let start=Date.now();
-    function loop() {
-        const canvas = document.getElementById('gameCanvas')
-        let milliseconds = Math.floor((Date.now() - start));
-        let seconds = Math.floor(milliseconds / 1000);
-        let minutes = Math.floor(seconds / 60);
-        seconds %= 60;
-        let ctx = canvas.getContext("2d");
-        ctx.clearRect(0, 0, 250, 100);
-        ctx.font = "48px Arial";
-        ctx.strokeText(minutes.toString().padStart(2,"0") + ":" + seconds.toString().padStart(2, "0") + ":" + milliseconds.toString().padStart(2, "0"), 0, 60);
-        requestAnimationFrame(loop);
-    }
-    loop();
-}
-
 initCanvas()
 initKeyControls()
-initTimer()
 
-function gameLoop(){
+function renderTimer() {
+    const canvas = document.getElementById('gameCanvas')
+    let dt = Date.now() - start
+    let milliseconds = Math.floor(dt % 1_000);
+    let seconds = Math.floor(dt / 1_000);
+    let minutes = Math.floor(dt / 60_000);
+    seconds %= 60;
+    let ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, 250, 150);
+    ctx.font = "48px Arial";
+    ctx.strokeText(minutes.toString().padStart(2,"0") + ":" + seconds.toString().padStart(2, "0") + ":" + milliseconds.toString().padStart(2, "0"), 0, 100);
+}
+
+(function gameLoop(){
     // renderBackground();
     // renderForeground();
     // renderCar();
+    renderTimer();
 
     window.requestAnimationFrame(gameLoop);
-}
+})()

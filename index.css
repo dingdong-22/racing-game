@@ -8,4 +8,5 @@
 #gameCanvas { 
     height: 90vh;
     width: 100vh;
+    border: orange 10px solid;
 }

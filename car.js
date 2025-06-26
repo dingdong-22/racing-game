@@ -80,8 +80,8 @@ class Car extends Component {
 
     const controls = keyDown
 
-    const throttle = Math.round(controls[83] * 10) / 10;
-    const reverse = Math.round(controls[87] * 10) / 10;
+    const throttle = Math.round(controls[87] * 10) / 10;
+    const reverse = Math.round(controls[83] * 10) / 10;
 
     if (
       this.isThrottling !== throttle ||

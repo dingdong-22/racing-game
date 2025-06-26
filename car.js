@@ -37,12 +37,12 @@ class Car extends Component {
     if (this.player === 1) {
       ctx.font = "48px Arial";
       ctx.strokeStyle = "red";
-      ctx.fillText((Math.sqrt(this.velocity.x ** 2 + this.velocity.y ** 2) * 100).toFixed(2), 20, window.innerHeight - 20);
+      ctx.fillText(`Red: ${(Math.sqrt(this.velocity.x ** 2 + this.velocity.y ** 2) * 100).toFixed(2)}`, 20, window.innerHeight - 20);
     } else {
       ctx.font = "48px Arial";
       ctx.strokeStyle = "red";
       ctx.fillStyle = 'red'
-      ctx.fillText((Math.sqrt(this.velocity.x ** 2 + this.velocity.y ** 2) * 100).toFixed(2), window.innerWidth - 110, window.innerHeight - 20);
+      ctx.fillText(`Blue: ${(Math.sqrt(this.velocity.x ** 2 + this.velocity.y ** 2) * 100).toFixed(2)}`, window.innerWidth - 250, window.innerHeight - 20);
     }
   }
 

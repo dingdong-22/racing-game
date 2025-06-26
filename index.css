@@ -2,6 +2,7 @@
     height: 10vh;
     color: red;
     font-size: 40px;
+    background-color: grey;
 }
 
 #gameCanvas { 

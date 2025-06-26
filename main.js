@@ -1,5 +1,5 @@
 // Constants
-const SPRITE_SIZE = 128;
+const SPRITE_SIZE = 127;
 
 // Global State
 let start = Date.now();
@@ -77,6 +77,29 @@ function renderBackground() {
     for (let x = 0; x < map[y].length; x += 1) {
       const currTile = new Image();
       const tileSpritePath = "./assets/Tiles/Grass/land_grass" + map[y][x] + ".png"
+      currTile.src = tileSpritePath
+      ctx.drawImage(currTile, (x * SPRITE_SIZE) - cam.x, (y * SPRITE_SIZE) - cam.y)
+    }
+  }
+}
+
+function renderForeground() {
+  const map = [
+    [null, null, null, null, "rock3", "tribune_full", null, null, null],
+    [null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, "tree_small", null],
+    [null, null, null, null, "tree_small", null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, "rock2"],
+    ["rock1", null, null, null, null, null, null, null, null, null]
+  ]
+
+  for (let y = 0; y < map.length; y += 1) {
+    for (let x = 0; x < map[y].length; x += 1) {
+      if (map[y][x] == null) continue;
+      const currTile = new Image();
+      const tileSpritePath = "./assets/Objects/" + map[y][x] + ".png"
       currTile.src = tileSpritePath
       ctx.drawImage(currTile, (x * SPRITE_SIZE) - cam.x, (y * SPRITE_SIZE) - cam.y)
     }
@@ -241,11 +264,11 @@ function renderCar() {
     gameLoopDelta = dt / 100
     clear()
     renderBackground();
+    renderForeground();
     renderBounds();
     updateCarState();
     renderCar();
     renderTimer();
-    // renderForeground();
 
     lastGameLoopTimeStamp = Date.now()
     window.requestAnimationFrame(gameLoop);

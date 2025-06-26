@@ -66,7 +66,7 @@ function renderTimer() {
     let seconds = Math.floor(dt / 1_000);
     let minutes = Math.floor(dt / 60_000);
     seconds %= 60;
-    ctx.clearRect(0, 0, 250, 150);
+    ctx.clearRect(0, 0, 225, 70);
     ctx.font = "48px Arial";
     ctx.strokeText(minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0") + ":" + milliseconds.toString().padStart(3, "0"), 0, 50);
 }

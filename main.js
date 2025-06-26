@@ -23,14 +23,16 @@ function initCanvas() {
     // 3. Scale the context so you can draw on it without considering the ratio.
     ctx.scale(ratio, ratio)
 
-    // TODO remove me.
-    const img = new Image();
+}
 
-    img.addEventListener("load", () => {
-        ctx.drawImage(img, 200, 200);
-    });
+function renderCar() {
+  const img = new Image();
 
-    img.src = "assets/Cars/car_black_small_1.png";
+  img.addEventListener("load", () => {
+      ctx.drawImage(img, 120, 200);
+  });
+
+  img.src = "assets/Cars/car_black_small_1.png";
 }
 
 function initKeyControls() {
@@ -98,9 +100,9 @@ function renderBackground() {
 
 (function gameLoop(){
     renderBackground();
-    // renderForeground();
-    // renderCar();
+    renderCar();
     renderTimer();
+    // renderForeground();
 
     window.requestAnimationFrame(gameLoop);
 })()

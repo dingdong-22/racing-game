@@ -1,8 +1,9 @@
 class Car extends Component {
-  constructor({ctx, position = { x: 0, y: 0 }, color = 'red', width = 100, height = 100, velocity = { x: 0, y: 0 }}) {
+  constructor({ctx, position = { x: 0, y: 0 }, color = 'red', width = 100, height = 100, velocity = { x: 0, y: 0 }, imagePath, player}) {
     super({ctx, position, color, width, height, velocity})
     this.img = new Image();
-    this.img.src = "assets/Cars/car_black_small_1.png";
+    this.img.src = imagePath;
+    this.player = player
 
     this.power = 0
     this.reverse = 0
@@ -37,9 +38,13 @@ class Car extends Component {
     const canTurn = this.power > 0.0025 || this.reverse;
 
     const controls = keyDown
+    const up = this.player === 1 ? controls[87] : controls[38]
+    const down = this.player === 1 ? controls[83] : controls[40]
+    const left = this.player === 1 ? controls[65] : controls[37]
+    const right = this.player === 1 ? controls[68] : controls[39]
 
-    const throttle = Math.round(controls[87] * 10) / 10;
-    const reverse = Math.round(controls[83] * 10) / 10;
+    const throttle = Math.round(up * 10) / 10;
+    const reverse = Math.round(down * 10) / 10;
 
     if (
       this.isThrottling !== throttle ||
@@ -49,8 +54,8 @@ class Car extends Component {
       this.isThrottling = throttle;
       this.isReversing = reverse;
     }
-    const turnLeft = canTurn && Math.round(controls[65] * 10) / 10;
-    const turnRight = canTurn && Math.round(controls[68] * 10) / 10;
+    const turnLeft = canTurn && Math.round(left * 10) / 10;
+    const turnRight = canTurn && Math.round(right * 10) / 10;
 
     if (this.isTurningLeft !== turnLeft) {
       changed = true;

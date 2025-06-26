@@ -13,12 +13,10 @@ let lastKeyDownKeyCode = "";
 let lastKeyUpKey = "";
 let lastKeyDownKey = "";
 let cam = { x: 0, y: 0 }
-const car = new Car({ctx: ctx, velocity: { x: 0, y: 0}})
+const car1 = new Car({ctx: ctx, velocity: { x: 0, y: 0}, imagePath: "assets/Cars/car_red_small_1.png", player: 1})
+const car2 = new Car({ctx: ctx, velocity: { x: 0, y: 0}, imagePath: "assets/Cars/car_blue_small_1.png", player: 2})
+const cars = [car1, car2]
 let bounds = []
-// Up
-// down
-// left 
-// right
 let keyDown = {
     87: false, 
     83: false,
@@ -259,11 +257,15 @@ function clear() {
 }
 
 function updateCarState() {
+  cars.forEach((car) => {
     car.update()
+  })
 }
 
 function renderCar() {
+  cars.forEach((car) => {
     car.draw()
+  })
 }
 
 (function gameLoop(){

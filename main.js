@@ -261,13 +261,13 @@ function renderBoost() {
     ctx.drawImage(boostTile, boostPos.x, boostPos.y, 48, 32)
 
 
-    car_centre = { x: car1.position.x + (car1.width), y: car1.position.y + car1.height }
     cars.forEach((car) => {
-      tryBoost(car)
+      const car_centre = { x: car.position.x + (car.width), y: car.position.y + car.height }
+      tryBoost(car, car_centre)
     })
 }
 
-function tryBoost(car) {
+function tryBoost(car, car_centre) {
   if (car_centre.x >= boostPos.x && car_centre.x <= boostPos.x + 60 &&
       car_centre.y >= boostPos.y + 20 && car_centre.y <= boostPos.y + 60) {
     car.boost();

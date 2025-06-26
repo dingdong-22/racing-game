@@ -11,7 +11,7 @@ Car
 Game logic
 
 > Keyboard input (Tanveer) X
-> Game/Frame cycle
+> Game/Frame cycle (Alex) X
 > Tracking Car
 > Physics
 > Collision detection

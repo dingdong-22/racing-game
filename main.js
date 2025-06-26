@@ -46,11 +46,11 @@ function initCanvas() {
 
 function initKeyControls() {
     window.addEventListener("keydown", (event) => {
-        keyDown[event.which] = true
+      keyDown[event.which] = true
     });
 
     window.addEventListener("keyup", (event) => {
-        keyDown[event.which] = false
+      keyDown[event.which] = false
     });
 }
 

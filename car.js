@@ -22,10 +22,9 @@ class Car extends Component {
   }
 
   draw() {
-    console.log(this.angle)
     // const x = window.innerWidth / 2 - (SPRITE_SIZE / 2)
     // const y = window.innerHeight / 2 - (SPRITE_SIZE / 2)
-    // const angleInRadians = (this.angle) / Math.PI
+    // const angle = (this.angle) / Math.PI
 
     // // save the current co-ordinate system 
     // // before we screw with it
@@ -59,6 +58,14 @@ class Car extends Component {
     // );
 
     // ctx.rotate(-angleInRadians);
+
+
+    // ctx.save();
+    // ctx.translate(x, y);
+    // ctx.rotate(-angle);
+    // // ctx.translate(-x,-y);
+    // ctx.drawImage(this.img, SPRITE_SIZE / 2, SPRITE_SIZE / 2);
+    // ctx.restore();
 
     ctx.drawImage(this.img,
       window.innerWidth / 2 - (SPRITE_SIZE / 2),
@@ -123,21 +130,17 @@ class Car extends Component {
 
     this.velocity.x += Math.sin(this.angle) * (this.power - this.reverse);
     this.velocity.y += Math.cos(this.angle) * (this.power - this.reverse);
-
-    this.position.x += this.velocity.x;
-    this.position.y -= this.velocity.y;
+    let xVelo = this.velocity.x * 10;
+    let yVelo = this.velocity.y * 10;
+    this.position.x += xVelo;
+    this.position.y -= yVelo;
     this.velocity.x *= this.drag;
     this.velocity.y *= this.drag;
     this.angle += this.angularVelocity;
     this.angularVelocity *= this.angularDrag;
 
-    let dx = this.velocity.x * gameLoopDelta
-    let dy = this.velocity.y * gameLoopDelta
-    this.position.x += dx
-    this.position.y += dy
-
-    cam.x += dx
-    cam.y += dy
+    cam.x += xVelo
+    cam.y -= yVelo
   }
 
   pressedKey(key) {

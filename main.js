@@ -112,8 +112,8 @@ function renderBounds() {
   const topBound = new Component({
     ctx,
     position: {
-      x: -cam.x,
-      y: -cam.y
+      x: - cam.x,
+      y: - cam.y
     },
     width: SPRITE_SIZE * 10,
     height: 60,
@@ -125,7 +125,7 @@ function renderBounds() {
     ctx,
     position: {
       x: SPRITE_SIZE * 4.6 - cam.x,
-      y: 60 -cam.y
+      y: 60 - cam.y
     },
     width: SPRITE_SIZE * 3,
     height: SPRITE_SIZE * 1.9,
@@ -136,8 +136,8 @@ function renderBounds() {
   const bottomBound = new Component({
     ctx,
     position: {
-      x: -cam.x,
-      y: (SPRITE_SIZE * 8 - 60)-cam.y
+      x: - cam.x,
+      y: (SPRITE_SIZE * 8 - 60)- cam.y
     },
     width: SPRITE_SIZE * 10,
     height: 60,
@@ -148,8 +148,8 @@ function renderBounds() {
   const leftBound = new Component({
     ctx,
     position: {
-      x: -cam.x,
-      y: -cam.y
+      x: - cam.x,
+      y: - cam.y
     },
     width: 60,
     height: SPRITE_SIZE * 8,
@@ -161,7 +161,7 @@ function renderBounds() {
     ctx,
     position: {
       x: 60 - cam.x,
-      y: ((SPRITE_SIZE * 8) - (SPRITE_SIZE * 8 / 2) - 60) -cam.y
+      y: ((SPRITE_SIZE * 8) - (SPRITE_SIZE * 8 / 2) - 60) - cam.y
     },
     width: 130,
     height: SPRITE_SIZE * 8 / 2,
@@ -173,7 +173,7 @@ function renderBounds() {
     ctx,
     position: {
       x: (SPRITE_SIZE * 10 - 190) - cam.x,
-      y: -cam.y
+      y: - cam.y
     },
     width: 190,
     height: SPRITE_SIZE * 8,
@@ -185,7 +185,7 @@ function renderBounds() {
     ctx,
     position: {
       x: ((SPRITE_SIZE * 10 - 190) - 190 + 70) - cam.x,
-      y: 60 -cam.y
+      y: 60 - cam.y
     },
     width: 120,
     height: SPRITE_SIZE * 8 / 2 - 10,
@@ -197,7 +197,7 @@ function renderBounds() {
     ctx,
     position: {
       x: 320 - cam.x,
-      y: ((SPRITE_SIZE * 8) - (SPRITE_SIZE * 8 / 2) - 60) -cam.y
+      y: ((SPRITE_SIZE * 8) - (SPRITE_SIZE * 8 / 2) - 60) - cam.y
     },
     width: SPRITE_SIZE * 3.9,
     height: SPRITE_SIZE * 5.8 / 2,
@@ -209,7 +209,7 @@ function renderBounds() {
     ctx,
     position: {
       x: (320 + SPRITE_SIZE * 3.9) - cam.x,
-      y: (SPRITE_SIZE * 8 - SPRITE_SIZE * 4.8 / 2) -cam.y
+      y: (SPRITE_SIZE * 8 - SPRITE_SIZE * 4.8 / 2) - cam.y
     },
     width: SPRITE_SIZE,
     height: SPRITE_SIZE * 0.8,
@@ -221,7 +221,7 @@ function renderBounds() {
     ctx,
     position: {
       x: 320 - cam.x,
-      y: (SPRITE_SIZE * 1.6) -cam.y
+      y: (SPRITE_SIZE * 1.6) - cam.y
     },
     width: 120,
     height: SPRITE_SIZE * 8 / 2,
@@ -233,7 +233,7 @@ function renderBounds() {
     ctx,
     position: {
       x: 200 - cam.x,
-      y: (SPRITE_SIZE * 1.6) -cam.y
+      y: (SPRITE_SIZE * 1.6) - cam.y
     },
     width: 120,
     height: SPRITE_SIZE * 0.8,

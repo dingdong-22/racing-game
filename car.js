@@ -69,7 +69,9 @@ class Car extends Component {
 
     ctx.drawImage(this.img,
       window.innerWidth / 2 - (SPRITE_SIZE / 2),
-      window.innerHeight / 2 - (SPRITE_SIZE / 2)
+      window.innerHeight / 2 - (SPRITE_SIZE / 2),
+      40 / 4,
+      70 / 4
     );
   }
 

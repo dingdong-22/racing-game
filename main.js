@@ -13,8 +13,8 @@ let lastKeyDownKeyCode = "";
 let lastKeyUpKey = "";
 let lastKeyDownKey = "";
 let cam = { x: 0, y: 0 }
-const car1 = new Car({ctx: ctx, velocity: { x: 0, y: 0}, imagePath: "assets/Cars/car_red_small_1.png", player: 1})
-const car2 = new Car({ctx: ctx, velocity: { x: 0, y: 0}, imagePath: "assets/Cars/car_blue_small_1.png", player: 2})
+const car1 = new Car({position: { x: 475, y: 350 }, ctx: ctx, velocity: { x: 0, y: 0}, imagePath: "assets/Cars/car_red_small_1.png", player: 1})
+const car2 = new Car({position: { x: 525, y: 350 }, ctx: ctx, velocity: { x: 0, y: 0}, imagePath: "assets/Cars/car_blue_small_1.png", player: 2})
 const cars = [car1, car2]
 let bounds = []
 let keyDown = {
@@ -84,7 +84,7 @@ function renderBackground() {
       const currTile = new Image();
       const tileSpritePath = "./assets/Tiles/Grass/land_grass" + map[y][x] + ".png"
       currTile.src = tileSpritePath
-      ctx.drawImage(currTile, (x * SPRITE_SIZE) - cam.x, (y * SPRITE_SIZE) - cam.y)
+      ctx.drawImage(currTile, (x * SPRITE_SIZE), (y * SPRITE_SIZE))
     }
   }
 }
@@ -107,7 +107,7 @@ function renderForeground() {
       const currTile = new Image();
       const tileSpritePath = "./assets/Objects/" + map[y][x] + ".png"
       currTile.src = tileSpritePath
-      ctx.drawImage(currTile, (x * SPRITE_SIZE) - cam.x, (y * SPRITE_SIZE) - cam.y)
+      ctx.drawImage(currTile, (x * SPRITE_SIZE), (y * SPRITE_SIZE))
     }
   }
 }

@@ -1,5 +1,5 @@
 class Car extends Component {
-  constructor({ctx, position = { x: 0, y: 0 }, color = 'red', width = 100, height = 100, velocity = { x: 0, y: 0 }, imagePath, player}) {
+  constructor({ctx, position = { x: 500, y: 350 }, color = 'red', width = 100, height = 100, velocity = { x: 0, y: 0 }, imagePath, player}) {
     super({ctx, position, color, width, height, velocity})
     this.img = new Image();
     this.img.src = imagePath;
@@ -23,12 +23,12 @@ class Car extends Component {
   }
 
   draw() {
-    const x = window.innerWidth / 2 - (SPRITE_SIZE / 2)
-    const y = window.innerHeight / 2 - (SPRITE_SIZE / 2)
+    const x = this.position.x
+    const y = this.position.y
     ctx.save();
-    ctx.translate(x, y);
-    ctx.rotate(this.angle);
-    ctx.drawImage(this.img, -20 / 2, -35 / 2, 40 / 2, 70 / 2);
+    // ctx.translate(x, y);
+    // ctx.rotate(this.angle);
+    ctx.drawImage(this.img, x, y, 40 / 2, 70 / 2);
     ctx.restore();
   }
 

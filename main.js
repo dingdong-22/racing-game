@@ -7,7 +7,7 @@ let lastKeyDownKeyCode = "";
 let lastKeyUpKey = "";
 let lastKeyDownKey = "";
 const cars = [
-    new Car({ctx: ctx})
+    new Car({ctx: ctx, velocity: { x: 1, y: 1}})
 ]
 
 function initCanvas() {
@@ -79,6 +79,12 @@ function renderBackground() {
   }
 }
 
+function updateCarState() {
+    cars.forEach((car) => {
+        car.updateState()
+    })
+}
+
 function renderCar() {
     cars.forEach((car) => {
         car.draw()
@@ -88,6 +94,7 @@ function renderCar() {
 (function gameLoop(){
     renderBackground();
     renderTimer();
+    updateCarState();
     renderCar();
     // renderForeground();
 

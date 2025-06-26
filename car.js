@@ -3,9 +3,21 @@ class Car extends Component {
     super({ctx, position, color, width, height, velocity})
     this.img = new Image();
     this.img.src = "assets/Cars/car_black_small_1.png";
+    this.lastRendered = Date.now()
   }
 
   draw() {
-    ctx.drawImage(this.img, 120, 200);
+    ctx.drawImage(this.img, this.position.x, this.position.y);
+  }
+
+  updateState() {
+    const dt = Date.now() - this.lastRendered
+    
+    const delta = dt / 100
+
+    this.position.x += this.velocity.x * delta
+    this.position.y += this.velocity.y * delta
+
+    this.lastRendered = Date.now()
   }
 }
